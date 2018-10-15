@@ -64,11 +64,11 @@ yarn start
 ### [Optional] appengine deploy Settings
 
 ```bash
-vi ./deploy.sh
+vi ./deploy-appengine.sh
 ```
 
 ### Deploy appengine
 
 ```bash
-./deploy.sh
+./deploy-appengine.sh
 ```
