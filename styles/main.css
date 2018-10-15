@@ -1,0 +1,14 @@
+html,
+body,
+body > div:first-child,
+#__next,
+#__next > div,
+#__next > div > div {
+  height: 100%;
+}
+
+/** Prevent a blank-blink until normarise.css is loaded complete */
+html, body {
+  margin: 0;
+  padding: 0;
+}

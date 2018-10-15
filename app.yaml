@@ -1,0 +1,7 @@
+service: default
+runtime: nodejs8
+default_expiration: "1m"
+
+handlers:
+- url: /.*
+  script: server.js
