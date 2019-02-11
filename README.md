@@ -24,7 +24,7 @@ VSCode と prettier と TSLint によって、リアルタイムに整形と構�
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [yarn](https://yarnpkg.com/lang/ja/)
 - [Typescript v3](https://www.typescriptlang.org/)
-- [Next.js v7](https://nextjs.org/)
+- [Next.js v8](https://nextjs.org/)
 - [MATERIAL-UI v3](https://material-ui.com/)
 - [Redux](https://redux.js.org/)
 - [TSLint](https://palantir.github.io/tslint/)
