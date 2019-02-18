@@ -174,7 +174,9 @@ const mapStateToProps = (state: IInitialState) => ({
 const mapDispatchToProps = (dispatch: Dispatch<Action<any>>) =>
   bindActionCreators(CounterActions, dispatch)
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(withStyles(styles)(Redux as any))
+export default withStyles(styles)(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Redux as any)
+)

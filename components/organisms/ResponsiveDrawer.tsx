@@ -148,7 +148,9 @@ const mapStateToProps = (state: IInitialState) => ({
   selectedPage: state.page.selectedPage,
 })
 
-export const ResponsiveDrawer = connect(
-  mapStateToProps,
-  undefined
-)(withStyles(styles)(ResponsiveDrawerComponent as any))
+export const ResponsiveDrawer = withStyles(styles)(
+  connect(
+    mapStateToProps,
+    undefined
+  )(ResponsiveDrawerComponent as any)
+)
