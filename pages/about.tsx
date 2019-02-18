@@ -63,7 +63,9 @@ class About extends React.Component<IProps, IState> {
 const mapDispatchToProps = (dispatch: Dispatch<Action<IPagePayload>>) =>
   bindActionCreators(PageActions, dispatch)
 
-export default connect(
-  undefined,
-  mapDispatchToProps
-)(withStyles(styles)(About as any))
+export default withStyles(styles)(
+  connect(
+    undefined,
+    mapDispatchToProps
+  )(About as any)
+)

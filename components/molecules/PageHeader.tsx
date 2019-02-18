@@ -62,7 +62,9 @@ const mapStateToProps = (state: IInitialState) => ({
   selectedPage: state.page.selectedPage,
 })
 
-export const PageHeader = connect(
-  mapStateToProps,
-  undefined
-)(withStyles(styles)(PageHeaderComponent as any))
+export const PageHeader = withStyles(styles)(
+  connect(
+    mapStateToProps,
+    undefined
+  )(PageHeaderComponent as any)
+)
