@@ -22,10 +22,9 @@ VSCode と prettier と TSLint によって、リアルタイムに整形と構�
 
 - [Google App Engine Node.js Standard Environment](https://cloud.google.com/appengine/docs/standard/nodejs/)
 - [Visual Studio Code](https://code.visualstudio.com/)
-- [yarn](https://yarnpkg.com/lang/ja/)
 - [Typescript v3](https://www.typescriptlang.org/)
 - [Next.js v8](https://nextjs.org/)
-- [MATERIAL-UI v3](https://material-ui.com/)
+- [MATERIAL-UI v4](https://material-ui.com/)
 - [Redux](https://redux.js.org/)
 - [TSLint](https://palantir.github.io/tslint/)
 
@@ -53,20 +52,20 @@ VSCode と prettier と TSLint によって、リアルタイムに整形と構�
 ```bash
 git clone https://github.com/treetips/typescript-nextjs-redux-material-ui-example.git
 cd typescript-nextjs-redux-material-ui-example
-yarn
+npm i
 ```
 
 ### Start local
 
 ```bash
-yarn dev
+npm run dev
 ```
 
 ### Build and start production express server
 
 ```bash
-yarn build
-yarn start
+npm run build
+npm start
 ```
 
 ## For google appengine
