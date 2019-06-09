@@ -49,8 +49,8 @@ const styles = (theme: Theme) =>
       color: theme.palette.primary.contrastText,
     },
     mainContainer: {
-      padding: theme.spacing.unit * 2,
-      marginBottom: theme.spacing.unit,
+      padding: theme.spacing(2),
+      marginBottom: theme.spacing(1),
     },
     title: {
       fontSize: "2em",

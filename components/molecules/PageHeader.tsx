@@ -15,7 +15,7 @@ const styles = (theme: Theme) =>
     root: {
       backgroundColor: theme.palette.primary.main,
       color: theme.palette.primary.contrastText,
-      padding: theme.spacing.unit * 2,
+      padding: theme.spacing(2),
       textAlign: "center",
     },
     title: {
@@ -24,7 +24,7 @@ const styles = (theme: Theme) =>
       alignItems: "center",
       fontWeight: "bold",
       fontSize: "3em",
-      padding: theme.spacing.unit * 2,
+      padding: theme.spacing(2),
     },
     description: {},
   })

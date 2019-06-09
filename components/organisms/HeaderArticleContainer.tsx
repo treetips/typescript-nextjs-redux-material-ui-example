@@ -10,7 +10,7 @@ const styles = (theme: Theme) =>
   createStyles({
     root: {},
     contentsContainer: {
-      padding: theme.spacing.unit,
+      padding: theme.spacing(1),
     },
   })
 

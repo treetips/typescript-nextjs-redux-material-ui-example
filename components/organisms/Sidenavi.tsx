@@ -37,9 +37,7 @@ const styles = (theme: Theme) =>
     },
     listItem: {
       border: 0,
-      fontSize: 40,
-      padding: "15px 5px 15px 15px",
-      boxShadow: theme.shadows[1],
+      boxShadow: theme.shadows[3],
     },
     deactive: {
       transition: "background-color 1.2s", // mouse out
