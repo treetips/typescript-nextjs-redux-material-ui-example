@@ -1,4 +1,9 @@
-import { Avatar, ListItem, ListItemText } from "@material-ui/core"
+import {
+  Avatar,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
+} from "@material-ui/core"
 import {
   createStyles,
   Theme,
@@ -12,7 +17,6 @@ const styles = (theme: Theme) =>
   createStyles({
     root: {},
     anchorLink: {
-      display: "flex",
       width: "100%",
       textDecoration: "none",
     },
@@ -61,21 +65,23 @@ const NextListItemComponent = (props: IProps) => {
   const { classes, className, href, icon, primary, secondary, onClick } = props
   const AvatorIcon = () => icon
   return (
-    <ListItem divider={true} className={className} onClick={onClick}>
-      <Link href={href}>
-        <a className={classes.anchorLink}>
-          <Avatar>
-            <AvatorIcon />
-          </Avatar>
+    <Link href={href}>
+      <a className={classes.anchorLink} onClick={onClick}>
+        <ListItem alignItems="center" divider={true} className={className}>
+          <ListItemAvatar>
+            <Avatar>
+              <AvatorIcon />
+            </Avatar>
+          </ListItemAvatar>
           <ListItemText
             primary={<span className={classes.listItemPrimary}>{primary}</span>}
             secondary={
               <span className={classes.listItemSecondary}>{secondary}</span>
             }
           />
-        </a>
-      </Link>
-    </ListItem>
+        </ListItem>
+      </a>
+    </Link>
   )
 }
 

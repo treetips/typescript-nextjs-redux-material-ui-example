@@ -1,67 +1,64 @@
+import { ServerStyleSheets } from "@material-ui/styles"
 import Document, { Head, Main, NextScript } from "next/document"
 import React from "react"
-import JssProvider from "react-jss/lib/JssProvider"
-import getPageContext from "../components/getPageContext"
+import flush from "styled-jsx/server"
+import { MuiTheme } from "../components/MuiTheme"
+import "../styles/main.css"
 
 interface IProps {
-  pageContext: any
   pageProps: any
 }
 
 /**
- * @see https://github.com/mui-org/material-ui/blob/master/examples/nextjs/pages/_document.js
+ * @see https://github.com/mui-org/material-ui/blob/master/examples/nextjs-with-typescript/pages/_document.tsx
  */
 class MyDocument extends Document<IProps> {
-  static getInitialProps = ctx => {
-    const pageContext = getPageContext()
-    const page = ctx.renderPage(Component => props => (
-      <JssProvider
-        registry={pageContext.sheetsRegistry}
-        generateClassName={pageContext.generateClassName}
-      >
-        <Component pageProps={pageContext} {...props} />
-      </JssProvider>
-    ))
+  static getInitialProps = async ctx => {
+    // Render app and page and get the context of the page with collected side effects.
+    const sheets = new ServerStyleSheets()
+
+    const originalRenderPage = ctx.renderPage
+
+    ctx.renderPage = () =>
+      originalRenderPage({
+        enhanceApp: App => props => sheets.collect(<App {...props} />),
+      })
+
+    const initialProps = await Document.getInitialProps(ctx)
 
     const pageProps = ctx.store.getState()
     return {
-      ...page,
-      pageContext,
+      ...initialProps,
       pageProps,
+      // Styles fragment is rendered after the app and page rendering finish.
       styles: (
-        <style
-          id="jss-server-side"
-          dangerouslySetInnerHTML={{
-            __html: pageContext.sheetsRegistry.toString(),
-          }}
-        />
+        <>
+          {sheets.getStyleElement()}
+          {flush() || null}
+        </>
       ),
     }
   }
 
   render() {
-    const { pageContext, pageProps } = this.props
+    const { pageProps } = this.props
     const page = pageProps.page.selectedPage
 
     return (
       <html lang="ja">
         <Head>
           <meta charSet="utf-8" />
+          {/* Use minimum-scale=1 to enable GPU rasterization */}
           <meta
             name="viewport"
-            content={
-              "user-scalable=0, initial-scale=1, " +
-              "minimum-scale=1, width=device-width, height=device-height"
-            }
+            content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
           />
-          <meta
-            name="theme-color"
-            content={pageContext.theme.palette.primary[500]}
-          />
+          {/* PWA primary color */}
+          <meta name="theme-color" content={MuiTheme.palette.primary.main} />
           <meta name="description" content={page.metaDescription} />
           <link
             rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap"
           />
         </Head>
         <body>

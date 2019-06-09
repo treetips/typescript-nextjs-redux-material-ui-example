@@ -12,8 +12,8 @@ const styles = (theme: Theme) =>
   createStyles({
     root: {},
     mainContainer: {
-      padding: theme.spacing.unit * 2,
-      marginBottom: theme.spacing.unit,
+      padding: theme.spacing(2),
+      marginBottom: theme.spacing(1),
     },
   })
 
