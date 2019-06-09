@@ -4,10 +4,10 @@ GAE_APP_YML="app.yaml"
 GAE_DEPLOY_VERSION="<<DEPLOY_VERSION>>"
 GAE_URL="https://${GAE_DEPLOY_VERSION}-dot-${GAE_PRJ_ID}.appspot.com"
 
-yarn build
+npm run build
 
 if [ $? -ne 0 ]; then
-  echo "yarn build failed."
+  echo "npm build failed."
   exit 1
 fi
 
