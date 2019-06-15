@@ -1,20 +1,16 @@
-import {
-  createStyles,
-  Theme,
-  withStyles,
-  WithStyles,
-} from "@material-ui/core/styles"
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles"
 import { PageHeader } from "../molecules"
 
-const styles = (theme: Theme) =>
+const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {},
     contentsContainer: {
       padding: theme.spacing(1),
     },
   })
+)
 
-interface IProps extends WithStyles<typeof styles> {
+interface IProps {
   /**
    * children
    */
@@ -25,8 +21,9 @@ interface IProps extends WithStyles<typeof styles> {
  * Header and article container component
  * @param props IProps
  */
-const HeaderArticleContainerComponent = (props: IProps) => {
-  const { classes, children } = props
+export const HeaderArticleContainer = function(props: IProps) {
+  const { children } = props
+  const classes = useStyles(props)
   return (
     <>
       <PageHeader />
@@ -34,7 +31,3 @@ const HeaderArticleContainerComponent = (props: IProps) => {
     </>
   )
 }
-
-export const HeaderArticleContainer = withStyles(styles)(
-  HeaderArticleContainerComponent
-)

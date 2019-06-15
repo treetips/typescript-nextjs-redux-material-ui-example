@@ -1,16 +1,11 @@
 import { Paper, Typography } from "@material-ui/core"
-import {
-  createStyles,
-  Theme,
-  withStyles,
-  WithStyles,
-} from "@material-ui/core/styles"
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles"
 import React from "react"
 import { connect } from "react-redux"
 import { Page } from "../../constants"
 import { IInitialState } from "../../store/states"
 
-const styles = (theme: Theme) =>
+const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       backgroundColor: theme.palette.primary.main,
@@ -28,8 +23,9 @@ const styles = (theme: Theme) =>
     },
     description: {},
   })
+)
 
-interface IProps extends WithStyles<typeof styles> {
+interface IProps {
   /**
    * from redux
    */
@@ -41,7 +37,8 @@ interface IProps extends WithStyles<typeof styles> {
  * @param props IProps
  */
 const PageHeaderComponent = (props: IProps) => {
-  const { classes, selectedPage } = props
+  const { selectedPage } = props
+  const classes = useStyles(props)
   return (
     <Paper square={true} className={classes.root}>
       <Typography variant="h1" color="inherit" className={classes.title}>
@@ -62,9 +59,7 @@ const mapStateToProps = (state: IInitialState) => ({
   selectedPage: state.page.selectedPage,
 })
 
-export const PageHeader = withStyles(styles)(
-  connect(
-    mapStateToProps,
-    undefined
-  )(PageHeaderComponent as any)
-)
+export const PageHeader = connect(
+  mapStateToProps,
+  undefined
+)(PageHeaderComponent as any)
