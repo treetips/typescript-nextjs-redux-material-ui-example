@@ -4,16 +4,11 @@ import {
   ListItemAvatar,
   ListItemText,
 } from "@material-ui/core"
-import {
-  createStyles,
-  Theme,
-  withStyles,
-  WithStyles,
-} from "@material-ui/core/styles"
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles"
 import Link from "next/link"
 import React from "react"
 
-const styles = (theme: Theme) =>
+const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {},
     anchorLink: {
@@ -29,8 +24,9 @@ const styles = (theme: Theme) =>
       color: theme.palette.primary.contrastText,
     },
   })
+)
 
-interface IProps extends WithStyles<typeof styles> {
+interface IProps {
   /**
    * <Link href="/">
    */
@@ -61,8 +57,9 @@ interface IProps extends WithStyles<typeof styles> {
  * Next.js optimized <ListItem>
  * @param props IProps
  */
-const NextListItemComponent = (props: IProps) => {
-  const { classes, className, href, icon, primary, secondary, onClick } = props
+export const NextListItem = function(props: IProps) {
+  const { className, href, icon, primary, secondary, onClick } = props
+  const classes = useStyles(props)
   const AvatorIcon = () => icon
   return (
     <Link href={href}>
@@ -84,5 +81,3 @@ const NextListItemComponent = (props: IProps) => {
     </Link>
   )
 }
-
-export const NextListItem = withStyles(styles)(NextListItemComponent)

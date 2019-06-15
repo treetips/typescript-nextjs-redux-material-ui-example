@@ -1,10 +1,5 @@
 import { List } from "@material-ui/core"
-import {
-  createStyles,
-  Theme,
-  withStyles,
-  WithStyles,
-} from "@material-ui/core/styles"
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles"
 import SvgIcon from "@material-ui/core/SvgIcon"
 import { connect } from "react-redux"
 import { bindActionCreators, Dispatch } from "redux"
@@ -14,7 +9,7 @@ import { IPagePayload, PageActions } from "../../store/actions"
 import { IInitialState } from "../../store/states"
 import { NextListItem } from "../molecules"
 
-const styles = (theme: Theme) =>
+const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       backgroundColor: theme.palette.primary.main,
@@ -50,8 +45,9 @@ const styles = (theme: Theme) =>
       backgroundColor: theme.palette.primary.light,
     },
   })
+)
 
-interface IProps extends WithStyles<typeof styles> {
+interface IProps {
   changePage: (pagePayload: IPagePayload) => number
   selectedPage: Page
 }
@@ -61,7 +57,8 @@ interface IProps extends WithStyles<typeof styles> {
  * @param props IProps
  */
 const SidenaviComponent = (props: IProps) => {
-  const { classes, changePage, selectedPage } = props
+  const { changePage, selectedPage } = props
+  const classes = useStyles(props)
 
   const handleChangePage = (page: Page) => () =>
     changePage({ selectedPage: page })
@@ -111,4 +108,4 @@ const mapDispatchToProps = (dispatch: Dispatch<Action<IPagePayload>>) =>
 export const Sidenavi = connect(
   mapStateToProps,
   mapDispatchToProps
-)(withStyles(styles)(SidenaviComponent as any))
+)(SidenaviComponent as any)

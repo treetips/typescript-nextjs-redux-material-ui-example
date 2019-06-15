@@ -1,9 +1,4 @@
-import {
-  createStyles,
-  Theme,
-  withStyles,
-  WithStyles,
-} from "@material-ui/core/styles"
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles"
 import Head from "next/head"
 import * as React from "react"
 import { connect } from "react-redux"
@@ -11,20 +6,22 @@ import { Page } from "../../constants"
 import { IInitialState } from "../../store/states"
 import { ResponsiveDrawer } from "../organisms"
 
-const styles = (theme: Theme) =>
+const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       height: "100%",
     },
   })
+)
 
-interface IProps extends WithStyles<typeof styles> {
+interface IProps {
   children: React.ReactNode
   selectedPage: Page
 }
 
 const LayoutComponent = (props: IProps) => {
-  const { classes, children, selectedPage } = props
+  const { children, selectedPage } = props
+  const classes = useStyles(props)
   return (
     <section className={classes.root}>
       <Head>
@@ -44,4 +41,4 @@ const mapStateToProps = (state: IInitialState) => ({
 export const Layout = connect(
   mapStateToProps,
   undefined
-)(withStyles(styles)(LayoutComponent as any))
+)(LayoutComponent as any)
