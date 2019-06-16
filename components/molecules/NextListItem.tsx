@@ -1,12 +1,7 @@
-import {
-  Avatar,
-  ListItem,
-  ListItemAvatar,
-  ListItemText,
-} from "@material-ui/core"
-import { createStyles, makeStyles, Theme } from "@material-ui/core/styles"
-import Link from "next/link"
-import React from "react"
+import { Avatar, ListItem, ListItemAvatar, ListItemText } from "@material-ui/core";
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
+import Link from "next/link";
+import React from "react";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

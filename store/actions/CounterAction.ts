@@ -7,7 +7,9 @@ export interface ICounterPayload {
 }
 
 export const CounterActions = {
-  increment: actionCreator<ICounterPayload>("increment"),
-  decrement: actionCreator<ICounterPayload>("decrement"),
+  // no arguments
+  increment: actionCreator("increment"),
+  decrement: actionCreator("decrement"),
+  // with arguments
   calculate: actionCreator<ICounterPayload>("calculate"),
 }
