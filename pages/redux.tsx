@@ -6,41 +6,16 @@ import {
   TextField,
   Typography,
 } from "@material-ui/core"
-import {
-  createStyles,
-  Theme,
-  withStyles,
-  WithStyles,
-} from "@material-ui/core/styles"
-import autobind from "autobind-decorator"
-import React from "react"
-import { connect } from "react-redux"
-import { bindActionCreators, Dispatch } from "redux"
-import { Action } from "typescript-fsa"
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles"
+import React, { useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import { HeaderArticleContainer } from "../components/organisms"
 import { Layout } from "../components/templates"
 import { Page } from "../constants"
-import {
-  CounterActions,
-  ICounterPayload,
-  IPagePayload,
-  PageActions,
-} from "../store/actions"
+import { CounterActions, IPagePayload, PageActions } from "../store/actions"
 import { IInitialState } from "../store/states"
 
-interface IProps extends WithStyles<typeof styles> {
-  count: number
-  increment: () => number
-  decrement: () => number
-  calculate: (inputNumber: ICounterPayload) => number
-  changePage: (pagePayload: IPagePayload) => void
-}
-
-interface IState {
-  inputNumber: number
-}
-
-const styles = (theme: Theme) =>
+const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {},
     counter: {
@@ -56,127 +31,110 @@ const styles = (theme: Theme) =>
       fontSize: "2em",
     },
   })
+)
 
-@autobind
-class Redux extends React.Component<IProps, IState> {
-  /**
-   * Initialize server side rendering
-   */
-  static getInitialProps = ctx => {
-    const pagePayload: IPagePayload = {
-      selectedPage: Page.REDUX,
-    }
-    ctx.store.dispatch({
-      type: PageActions.changePage.toString(),
-      payload: pagePayload,
-    })
-  }
+const countSelector = (state: IInitialState) => state.counter.count
 
-  constructor(props: IProps) {
-    super(props)
-    this.state = {
-      inputNumber: 12,
-    }
-  }
+function Redux() {
+  const classes = useStyles({})
+  const dispatch = useDispatch()
+  const count = useSelector(countSelector)
+  const [inputNumber, setInputNumber] = useState<number>(10)
 
   /**
-   * Increment count
+   * Increment
    */
-  handleIncrement = () => this.props.increment()
+  const handleIncrement = () => dispatch(CounterActions.increment())
 
   /**
-   * Decrement count
+   * Decrement
    */
-  handleDecrement = () => this.props.decrement()
+  const handleDecrement = () => dispatch(CounterActions.decrement())
 
   /**
    * Change inputNumber value
    */
-  handleChangeCount = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangeCount = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value
     // ignore not number
     if (val.match(/^([1-9]|0)+[0-9]*$/i)) {
-      this.setState({ inputNumber: Number(val) })
+      setInputNumber(Number(val))
     }
   }
 
   /**
    * Calculate input number
    */
-  handleCalculate = () => {
-    this.props.calculate({
-      inputNumber: Number(this.state.inputNumber),
-    })
+  const handleCalculate = () => {
+    dispatch(
+      CounterActions.calculate({
+        inputNumber: Number(inputNumber),
+      })
+    )
   }
 
-  render() {
-    const { classes, count } = this.props
-    const CurrentNumber = () => (
-      <Avatar className={classes.counter}>{count}</Avatar>
-    )
-    return (
-      <Layout>
-        <HeaderArticleContainer>
-          <Paper className={classes.mainContainer}>
+  const CurrentNumber = () => (
+    <Avatar className={classes.counter}>{count}</Avatar>
+  )
+
+  return (
+    <Layout>
+      <HeaderArticleContainer>
+        <Paper className={classes.mainContainer}>
+          <Typography variant="h2" gutterBottom className={classes.title}>
+            Increment / Decrement
+          </Typography>
+          <CurrentNumber />
+          <Button variant="contained" color="primary" onClick={handleIncrement}>
+            + 1
+          </Button>
+          &nbsp;
+          <Button variant="contained" color="primary" onClick={handleDecrement}>
+            - 1
+          </Button>
+        </Paper>
+
+        <Paper className={classes.mainContainer}>
+          <FormControl>
             <Typography variant="h2" gutterBottom className={classes.title}>
-              Increment / Decrement
+              Calculate
             </Typography>
-            <CurrentNumber />
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={this.handleIncrement}
-            >
-              + 1
-            </Button>
-            &nbsp;
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={this.handleDecrement}
-            >
-              - 1
-            </Button>
-          </Paper>
-          <Paper className={classes.mainContainer}>
-            <FormControl>
-              <Typography variant="h2" gutterBottom className={classes.title}>
-                Calculate
-              </Typography>
-              <CurrentNumber />
-              <TextField
-                id="standard-name"
-                label="Input number !!"
-                value={this.state.inputNumber}
-                onChange={this.handleChangeCount}
-                margin="normal"
-              />
 
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={this.handleCalculate}
-              >
-                calculate
-              </Button>
-            </FormControl>
-          </Paper>
-        </HeaderArticleContainer>
-      </Layout>
-    )
-  }
+            <CurrentNumber />
+
+            <TextField
+              id="standard-name"
+              label="Input number !!"
+              value={inputNumber}
+              onChange={handleChangeCount}
+              margin="normal"
+            />
+
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleCalculate}
+            >
+              calculate
+            </Button>
+          </FormControl>
+        </Paper>
+      </HeaderArticleContainer>
+    </Layout>
+  )
 }
 
-const mapStateToProps = (state: IInitialState) => ({
-  count: state.counter.count,
-})
+/**
+ * Server side rendering
+ */
+Redux.getInitialProps = async ctx => {
+  const pagePayload: IPagePayload = {
+    selectedPage: Page.REDUX,
+  }
+  ctx.store.dispatch({
+    type: PageActions.changePage.toString(),
+    payload: pagePayload,
+  })
+}
 
-const mapDispatchToProps = (dispatch: Dispatch<Action<any>>) =>
-  bindActionCreators(CounterActions, dispatch)
-
-export default withStyles(styles)(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(Redux as any)
-)
+export default Redux

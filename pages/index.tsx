@@ -1,14 +1,9 @@
 import { Paper, Typography } from "@material-ui/core"
-import {
-  createStyles,
-  Theme,
-  withStyles,
-  WithStyles,
-} from "@material-ui/core/styles"
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles"
 import { HeaderArticleContainer } from "../components/organisms"
 import { Layout } from "../components/templates"
 
-const styles = (theme: Theme) =>
+const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {},
     mainContainer: {
@@ -16,11 +11,10 @@ const styles = (theme: Theme) =>
       marginBottom: theme.spacing(1),
     },
   })
+)
 
-interface IProps extends WithStyles<typeof styles> {}
-
-const Index = (props: IProps) => {
-  const { classes } = props
+function Index() {
+  const classes = useStyles({})
   return (
     <Layout>
       <HeaderArticleContainer>
@@ -32,4 +26,4 @@ const Index = (props: IProps) => {
   )
 }
 
-export default withStyles(styles)(Index)
+export default Index

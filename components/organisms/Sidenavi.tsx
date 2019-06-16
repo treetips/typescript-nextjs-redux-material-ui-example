@@ -1,11 +1,9 @@
 import { List } from "@material-ui/core"
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles"
 import SvgIcon from "@material-ui/core/SvgIcon"
-import { connect } from "react-redux"
-import { bindActionCreators, Dispatch } from "redux"
-import { Action } from "typescript-fsa"
+import { useDispatch, useSelector } from "react-redux"
 import { Page, SiteInfo } from "../../constants"
-import { IPagePayload, PageActions } from "../../store/actions"
+import { PageActions } from "../../store/actions"
 import { IInitialState } from "../../store/states"
 import { NextListItem } from "../molecules"
 
@@ -47,21 +45,21 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 
-interface IProps {
-  changePage: (pagePayload: IPagePayload) => number
-  selectedPage: Page
-}
+interface IProps {}
+
+const selectedPageSelector = (state: IInitialState) => state.page.selectedPage
 
 /**
  * Side navigation component
  * @param props IProps
  */
-const SidenaviComponent = (props: IProps) => {
-  const { changePage, selectedPage } = props
+export const Sidenavi = function(props: IProps) {
   const classes = useStyles(props)
+  const selectedPage = useSelector(selectedPageSelector)
+  const dispatch = useDispatch()
 
   const handleChangePage = (page: Page) => () =>
-    changePage({ selectedPage: page })
+    dispatch(PageActions.changePage({ selectedPage: page }))
 
   return (
     <div className={classes.root}>
@@ -96,16 +94,3 @@ const SidenaviComponent = (props: IProps) => {
     </div>
   )
 }
-
-const mapStateToProps = (state: IInitialState) => ({
-  count: state.counter.count,
-  selectedPage: state.page.selectedPage,
-})
-
-const mapDispatchToProps = (dispatch: Dispatch<Action<IPagePayload>>) =>
-  bindActionCreators(PageActions, dispatch)
-
-export const Sidenavi = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SidenaviComponent as any)
