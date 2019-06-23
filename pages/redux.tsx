@@ -2,13 +2,13 @@ import {
   Avatar,
   Button,
   FormControl,
-  Paper,
   TextField,
   Typography,
 } from "@material-ui/core"
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles"
 import React, { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { SpacingPaper } from "../components/atoms"
 import { HeaderArticleContainer } from "../components/organisms"
 import { Layout } from "../components/templates"
 import { Page } from "../constants"
@@ -22,10 +22,6 @@ const useStyles = makeStyles((theme: Theme) =>
       margin: 10,
       backgroundColor: theme.palette.primary.main,
       color: theme.palette.primary.contrastText,
-    },
-    mainContainer: {
-      padding: theme.spacing(2),
-      marginBottom: theme.spacing(1),
     },
     title: {
       fontSize: "2em",
@@ -80,7 +76,7 @@ function Redux() {
   return (
     <Layout>
       <HeaderArticleContainer>
-        <Paper className={classes.mainContainer}>
+        <SpacingPaper>
           <Typography variant="h2" gutterBottom className={classes.title}>
             Increment / Decrement
           </Typography>
@@ -92,9 +88,9 @@ function Redux() {
           <Button variant="contained" color="primary" onClick={handleDecrement}>
             - 1
           </Button>
-        </Paper>
+        </SpacingPaper>
 
-        <Paper className={classes.mainContainer}>
+        <SpacingPaper>
           <FormControl>
             <Typography variant="h2" gutterBottom className={classes.title}>
               Calculate
@@ -118,7 +114,7 @@ function Redux() {
               calculate
             </Button>
           </FormControl>
-        </Paper>
+        </SpacingPaper>
       </HeaderArticleContainer>
     </Layout>
   )

@@ -1,6 +1,7 @@
-import { Paper, Typography } from "@material-ui/core"
+import { Typography } from "@material-ui/core"
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles"
 import React from "react"
+import { SpacingPaper } from "../components/atoms"
 import { HeaderArticleContainer } from "../components/organisms"
 import { Layout } from "../components/templates"
 import { Page } from "../constants"
@@ -9,10 +10,6 @@ import { IPagePayload, PageActions } from "../store/actions"
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {},
-    mainContainer: {
-      padding: theme.spacing(2),
-      marginBottom: theme.spacing(1),
-    },
   })
 )
 
@@ -21,9 +18,9 @@ function About() {
   return (
     <Layout>
       <HeaderArticleContainer>
-        <Paper className={classes.mainContainer}>
+        <SpacingPaper>
           <Typography variant="h5">About page !!</Typography>
-        </Paper>
+        </SpacingPaper>
       </HeaderArticleContainer>
     </Layout>
   )
