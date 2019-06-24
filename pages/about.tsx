@@ -5,7 +5,7 @@ import { SpacingPaper } from "../components/atoms"
 import { HeaderArticleContainer } from "../components/organisms"
 import { Layout } from "../components/templates"
 import { Page } from "../constants"
-import { IPagePayload, PageActions } from "../store/actions"
+import { IPagePayload, PageActions } from "../store/page"
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

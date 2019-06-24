@@ -3,8 +3,7 @@ import { createStyles, makeStyles, Theme } from "@material-ui/core/styles"
 import SvgIcon from "@material-ui/core/SvgIcon"
 import { useDispatch, useSelector } from "react-redux"
 import { Page, SiteInfo } from "../../constants"
-import { PageActions } from "../../store/actions"
-import { IInitialState } from "../../store/states"
+import { PageActions, selectedPageSelector } from "../../store/page"
 import { NextListItem } from "../molecules"
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -46,8 +45,6 @@ const useStyles = makeStyles((theme: Theme) =>
 )
 
 interface IProps {}
-
-const selectedPageSelector = (state: IInitialState) => state.page.selectedPage
 
 /**
  * Side navigation component
