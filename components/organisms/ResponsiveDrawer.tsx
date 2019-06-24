@@ -4,7 +4,7 @@ import { createStyles, makeStyles, Theme } from "@material-ui/core/styles"
 import MenuIcon from "@material-ui/icons/Menu"
 import React, { useState } from "react"
 import { useSelector } from "react-redux"
-import { IInitialState } from "../../store/states"
+import { selectedPageSelector } from "../../store/page"
 import { Sidenavi } from "../organisms"
 
 const drawerWidth = 290
@@ -50,8 +50,6 @@ const useStyles = makeStyles((theme: Theme) =>
 interface IProps {
   children: React.ReactNode
 }
-
-const selectedPageSelector = (state: IInitialState) => state.page.selectedPage
 
 /**
  * Responsive drawer

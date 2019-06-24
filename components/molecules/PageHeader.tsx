@@ -2,7 +2,7 @@ import { Paper, Typography } from "@material-ui/core"
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles"
 import React from "react"
 import { useSelector } from "react-redux"
-import { IInitialState } from "../../store/states"
+import { selectedPageSelector } from "../../store/page"
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -25,8 +25,6 @@ const useStyles = makeStyles((theme: Theme) =>
 )
 
 interface IProps {}
-
-const selectedPageSelector = (state: IInitialState) => state.page.selectedPage
 
 /**
  * Page header component

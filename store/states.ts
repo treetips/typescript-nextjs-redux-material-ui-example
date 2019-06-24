@@ -1,49 +1,18 @@
-import { Page } from "../constants"
-
-/**
- * Counter
- */
-export interface ICounterState {
-  count: number
-}
-export const CounterInitialState: ICounterState = {
-  count: 1,
-}
-
-/**
- * Page
- */
-export interface IPageState {
-  selectedPage: Page
-}
-export const PageInitialState: IPageState = {
-  selectedPage: Page.TOP,
-}
+import { CounterInitialState, ICounterState } from "./counter"
+import { IPageState, PageInitialState } from "./page"
 
 /**
  * Initial state tree interface
  */
 export interface IInitialState {
-  /**
-   * Root counter state
-   */
-  counter: ICounterState
-  /**
-   * Root page state
-   */
-  page: IPageState
+  counter: Readonly<ICounterState>
+  page: Readonly<IPageState>
 }
 
 /**
  * Initial state tree
  */
 export const InitialState: IInitialState = {
-  /**
-   * Root counter state
-   */
   counter: CounterInitialState,
-  /**
-   * Root page state
-   */
   page: PageInitialState,
 }
