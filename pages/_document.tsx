@@ -1,9 +1,10 @@
-import { ServerStyleSheets } from "@material-ui/styles"
-import Document, { Head, Main, NextScript } from "next/document"
-import React from "react"
-import flush from "styled-jsx/server"
-import { MuiTheme } from "../components/MuiTheme"
-import "../styles/main.css"
+import { ServerStyleSheets } from "@material-ui/styles";
+import Document, { Head, Main, NextScript } from "next/document";
+import React from "react";
+import flush from "styled-jsx/server";
+import { AppContext } from "../components/AppContext";
+import { MuiTheme } from "../components/MuiTheme";
+import "../styles/main.css";
 
 interface IProps {
   pageProps: any
@@ -13,7 +14,7 @@ interface IProps {
  * @see https://github.com/mui-org/material-ui/blob/master/examples/nextjs-with-typescript/pages/_document.tsx
  */
 class MyDocument extends Document<IProps> {
-  static getInitialProps = async ctx => {
+  static getInitialProps = async (ctx: AppContext) => {
     // Render app and page and get the context of the page with collected side effects.
     const sheets = new ServerStyleSheets()
 
