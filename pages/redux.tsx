@@ -8,6 +8,7 @@ import {
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles"
 import React, { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { AppContext } from "../components/AppContext"
 import { SpacingPaper } from "../components/atoms"
 import { HeaderArticleContainer } from "../components/organisms"
 import { Layout } from "../components/templates"
@@ -121,7 +122,7 @@ function Redux() {
 /**
  * Server side rendering
  */
-Redux.getInitialProps = async ctx => {
+Redux.getInitialProps = async (ctx: AppContext) => {
   const pagePayload: IPagePayload = {
     selectedPage: Page.REDUX,
   }
