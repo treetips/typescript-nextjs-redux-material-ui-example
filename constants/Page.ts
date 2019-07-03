@@ -1,5 +1,5 @@
 import { Color } from "@material-ui/core"
-import { blue, orange, pink } from "@material-ui/core/colors"
+import { blue, orange, pink, red } from "@material-ui/core/colors"
 import { SvgIconProps } from "@material-ui/core/SvgIcon"
 import HomeIcon from "@material-ui/icons/Home"
 import InfoIcon from "@material-ui/icons/Info"
@@ -45,6 +45,16 @@ export class Page implements IEnum<Page> {
     "/about",
     InfoIcon,
     orange
+  )
+  public static readonly ERROR = new Page(
+    99,
+    "Error",
+    "Error",
+    "Error | sample",
+    "Error.",
+    "/error",
+    InfoIcon,
+    red
   )
 
   /**
