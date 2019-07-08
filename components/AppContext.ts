@@ -1,10 +1,10 @@
-import { NextDocumentContext } from "next/document"
+import { DocumentContext } from "next/document"
 import { Store } from "redux"
 
 /**
  * NextDocumentContext with redux store context
  * @tree
  */
-export type AppContext = NextDocumentContext & {
+export type AppContext = DocumentContext & {
   readonly store: Store
 }

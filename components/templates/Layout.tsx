@@ -5,7 +5,7 @@ import { useSelector } from "react-redux"
 import { selectedPageSelector } from "../../store/page"
 import { ResponsiveDrawer } from "../organisms"
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles((_: Theme) =>
   createStyles({
     root: {
       height: "100%",
@@ -13,16 +13,17 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 
-interface IProps {
+type Props = {
   children: React.ReactNode
+  className?: string
 }
 
-export const Layout = function(props: IProps) {
-  const { children } = props
+export const Layout = function(props: Props) {
+  const { children, className } = props
   const classes = useStyles(props)
   const selectedPage = useSelector(selectedPageSelector)
   return (
-    <section className={classes.root}>
+    <section className={`${classes.root} ${className}`}>
       <Head>
         <title>{selectedPage.title}</title>
       </Head>

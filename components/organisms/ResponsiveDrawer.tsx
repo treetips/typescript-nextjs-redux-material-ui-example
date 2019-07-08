@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 
-interface IProps {
+type Props = {
   children: React.ReactNode
 }
 
@@ -55,7 +55,7 @@ interface IProps {
  * Responsive drawer
  * @see https://material-ui.com/demos/drawers/#responsive-drawer
  */
-export const ResponsiveDrawer = function(props: IProps) {
+export const ResponsiveDrawer = function(props: Props) {
   const { children } = props
   const classes = useStyles(props)
   const selectedPage = useSelector(selectedPageSelector)
