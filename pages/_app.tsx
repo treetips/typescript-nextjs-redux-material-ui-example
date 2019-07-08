@@ -7,7 +7,7 @@ import { Provider } from "react-redux"
 import { MuiTheme } from "../components/MuiTheme"
 import { configureStore } from "../store/configureStore"
 
-interface IProps {
+type Props = {
   Component: React.Component
   store: any
 }
@@ -15,7 +15,7 @@ interface IProps {
 /**
  * @see https://github.com/mui-org/material-ui/blob/master/examples/nextjs-with-typescript/pages/_app.tsx
  */
-class MyApp extends App<IProps> {
+class MyApp extends App<Props> {
   static async getInitialProps({ Component, ctx }) {
     const pageProps = Component.getInitialProps
       ? await Component.getInitialProps(ctx)

@@ -44,13 +44,13 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 
-interface IProps {}
+type Props = {}
 
 /**
  * Side navigation component
- * @param props IProps
+ * @param props Props
  */
-export const Sidenavi = function(props: IProps) {
+export const Sidenavi = function(props: Props) {
   const classes = useStyles(props)
   const selectedPage = useSelector(selectedPageSelector)
   const dispatch = useDispatch()

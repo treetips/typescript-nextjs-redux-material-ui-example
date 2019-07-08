@@ -1,7 +1,12 @@
-import { Avatar, ListItem, ListItemAvatar, ListItemText } from "@material-ui/core";
-import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-import Link from "next/link";
-import React from "react";
+import {
+  Avatar,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
+} from "@material-ui/core"
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles"
+import Link from "next/link"
+import React from "react"
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -21,7 +26,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 
-interface IProps {
+type Props = {
   /**
    * <Link href="/">
    */
@@ -50,9 +55,9 @@ interface IProps {
 
 /**
  * Next.js optimized <ListItem>
- * @param props IProps
+ * @param props Props
  */
-export const NextListItem = function(props: IProps) {
+export const NextListItem = function(props: Props) {
   const { className, href, icon, primary, secondary, onClick } = props
   const classes = useStyles(props)
   const AvatorIcon = () => icon

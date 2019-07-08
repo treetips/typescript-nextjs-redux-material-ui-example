@@ -13,12 +13,12 @@ const useStyles = makeStyles((_: Theme) =>
   })
 )
 
-interface IProps {
+type Props = {
   children: React.ReactNode
   className?: string
 }
 
-export const Layout = function(props: IProps) {
+export const Layout = function(props: Props) {
   const { children, className } = props
   const classes = useStyles(props)
   const selectedPage = useSelector(selectedPageSelector)

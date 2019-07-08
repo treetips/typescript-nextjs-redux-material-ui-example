@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 
-interface IProps {
+type Props = {
   /**
    * children
    */
@@ -19,9 +19,9 @@ interface IProps {
 
 /**
  * Header and article container component
- * @param props IProps
+ * @param props Props
  */
-export const HeaderArticleContainer = function(props: IProps) {
+export const HeaderArticleContainer = function(props: Props) {
   const { children } = props
   const classes = useStyles(props)
   return (

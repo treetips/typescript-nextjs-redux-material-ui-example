@@ -14,11 +14,11 @@ const useStyles = makeStyles((_: Theme) =>
   })
 )
 
-interface IProps {
+type Props = {
   httpStatusCode: number
 }
 
-function Error(props: IProps) {
+function Error(props: Props) {
   const { httpStatusCode } = props
   const classes = useStyles(props)
   return (
@@ -37,7 +37,7 @@ function Error(props: IProps) {
 /**
  * Server side rendering
  */
-Error.getInitialProps = async (ctx: AppContext): Promise<IProps> => {
+Error.getInitialProps = async (ctx: AppContext): Promise<Props> => {
   const pagePayload: IPagePayload = {
     selectedPage: Page.ERROR,
   }

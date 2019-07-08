@@ -1,16 +1,16 @@
 import { Paper } from "@material-ui/core"
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles"
 
-const useStyles = makeStyles<Theme, IProps>((theme: Theme) =>
+const useStyles = makeStyles<Theme, Props>((theme: Theme) =>
   createStyles({
-    root: (props: IProps) => ({
+    root: (props: Props) => ({
       padding: props.noPadding === true ? theme.spacing(0) : theme.spacing(2),
       marginBottom: theme.spacing(2),
     }),
   })
 )
 
-interface IProps {
+type Props = {
   /**
    * shildren
    */
@@ -25,7 +25,7 @@ interface IProps {
  * Paper with spacing
  * @param props IProps
  */
-export const SpacingPaper = (props: IProps) => {
+export const SpacingPaper = (props: Props) => {
   const { children } = props
   const classes = useStyles(props)
   return (

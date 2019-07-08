@@ -24,13 +24,13 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 
-interface IProps {}
+type Props = {}
 
 /**
  * Page header component
- * @param props IProps
+ * @param props Props
  */
-export const PageHeader = function(props: IProps) {
+export const PageHeader = function(props: Props) {
   const classes = useStyles(props)
   const selectedPage = useSelector(selectedPageSelector)
   return (

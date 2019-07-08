@@ -6,14 +6,14 @@ import { AppContext } from "../components/AppContext"
 import { MuiTheme } from "../components/MuiTheme"
 import "../styles/main.css"
 
-interface IProps {
+type Props = {
   pageProps: any
 }
 
 /**
  * @see https://github.com/mui-org/material-ui/blob/master/examples/nextjs-with-typescript/pages/_document.tsx
  */
-class MyDocument extends Document<IProps> {
+class MyDocument extends Document<Props> {
   static getInitialProps = async (ctx: AppContext): Promise<any> => {
     // Render app and page and get the context of the page with collected side effects.
     const sheets = new ServerStyleSheets()
