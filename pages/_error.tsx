@@ -8,7 +8,7 @@ import { Layout } from "../components/templates"
 import { Page } from "../constants"
 import { IPagePayload, PageActions } from "../store/page"
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles((_: Theme) =>
   createStyles({
     root: {},
   })
@@ -22,7 +22,7 @@ function Error(props: IProps) {
   const { httpStatusCode } = props
   const classes = useStyles(props)
   return (
-    <Layout>
+    <Layout className={classes.root}>
       <HeaderArticleContainer>
         <SpacingPaper>
           <Typography variant="h5">

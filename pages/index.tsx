@@ -4,7 +4,7 @@ import { SpacingPaper } from "../components/atoms"
 import { HeaderArticleContainer } from "../components/organisms"
 import { Layout } from "../components/templates"
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles((_: Theme) =>
   createStyles({
     root: {},
   })
@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme: Theme) =>
 function Index() {
   const classes = useStyles({})
   return (
-    <Layout>
+    <Layout className={classes.root}>
       <HeaderArticleContainer>
         <SpacingPaper>
           <Typography variant="h5">Hello Next.js 👋</Typography>

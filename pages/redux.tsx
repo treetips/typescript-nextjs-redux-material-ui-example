@@ -73,7 +73,7 @@ function Redux() {
   )
 
   return (
-    <Layout>
+    <Layout className={classes.root}>
       <HeaderArticleContainer>
         <SpacingPaper>
           <Typography variant="h2" gutterBottom className={classes.title}>
