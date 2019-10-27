@@ -6,4 +6,9 @@ declare module "react" {
     jsx?: boolean
     global?: boolean
   }
+
+  type LoadingAttributeType = "auto" | "lazy" | "eager"
+  interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
+    loading?: LoadingAttributeType
+  }
 }
