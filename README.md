@@ -23,7 +23,7 @@ VSCode と prettier と TSLint によって、リアルタイムに整形と構�
 - [Google App Engine Node.js Standard Environment](https://cloud.google.com/appengine/docs/standard/nodejs/)
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Typescript v3](https://www.typescriptlang.org/)
-- [Next.js v8](https://nextjs.org/)
+- [Next.js v9](https://nextjs.org/)
 - [MATERIAL-UI v4](https://material-ui.com/)
 - [Redux](https://redux.js.org/)
 - [TSLint](https://palantir.github.io/tslint/)

@@ -1,7 +1,7 @@
 import CssBaseline from "@material-ui/core/CssBaseline"
 import { ThemeProvider } from "@material-ui/styles"
 import withRedux from "next-redux-wrapper"
-import App, { Container } from "next/app"
+import App from "next/app"
 import React from "react"
 import { Provider } from "react-redux"
 import { MuiTheme } from "../components/MuiTheme"
@@ -35,15 +35,13 @@ class MyApp extends App<Props> {
     const { store, Component, pageProps } = this.props
 
     return (
-      <Container>
-        <Provider store={store}>
-          <ThemeProvider theme={MuiTheme}>
-            {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-            <CssBaseline />
-            <Component {...pageProps} />
-          </ThemeProvider>
-        </Provider>
-      </Container>
+      <Provider store={store}>
+        <ThemeProvider theme={MuiTheme}>
+          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+          <CssBaseline />
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </Provider>
     )
   }
 }

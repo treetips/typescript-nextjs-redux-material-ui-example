@@ -14,10 +14,6 @@ app
     // support gzip
     server.use(compression())
 
-    server.get("/artwork/:artworkId", (req, res) => {
-      return app.render(req, res, "/artwork", req.params)
-    })
-
     server.get("*", (req, res) => {
       return handle(req, res)
     })
