@@ -38,15 +38,17 @@ function Error(props: Props) {
  * Server side rendering
  */
 Error.getInitialProps = async (ctx: AppContext): Promise<Props> => {
+  const { res, store } = ctx
+
   const pagePayload: IPagePayload = {
     selectedPage: Page.ERROR,
   }
-  ctx.store.dispatch({
+  store.dispatch({
     type: PageActions.changePage.toString(),
     payload: pagePayload,
   })
   return {
-    httpStatusCode: ctx.res.statusCode,
+    httpStatusCode: res.statusCode,
   }
 }
 

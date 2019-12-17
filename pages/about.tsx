@@ -14,8 +14,10 @@ const useStyles = makeStyles((_: Theme) =>
   })
 )
 
-function About() {
-  const classes = useStyles({})
+type Props = {}
+
+function About(props: Props) {
+  const classes = useStyles(props)
   return (
     <Layout className={classes.root}>
       <HeaderArticleContainer>
@@ -30,14 +32,17 @@ function About() {
 /**
  * Server side rendering
  */
-About.getInitialProps = async (ctx: AppContext) => {
+About.getInitialProps = async (ctx: AppContext): Promise<Props> => {
+  const { store } = ctx
+
   const pagePayload: IPagePayload = {
     selectedPage: Page.ABOUT,
   }
-  ctx.store.dispatch({
+  store.dispatch({
     type: PageActions.changePage.toString(),
     payload: pagePayload,
   })
+  return {}
 }
 
 export default About
