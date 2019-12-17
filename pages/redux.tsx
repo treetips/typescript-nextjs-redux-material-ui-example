@@ -30,8 +30,10 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 
-function Redux() {
-  const classes = useStyles({})
+type Props = {}
+
+function Redux(props: Props) {
+  const classes = useStyles(props)
   const dispatch = useDispatch()
   const count = useSelector(countSelector)
   const [inputNumber, setInputNumber] = useState<number>(10)
@@ -122,14 +124,17 @@ function Redux() {
 /**
  * Server side rendering
  */
-Redux.getInitialProps = async (ctx: AppContext) => {
+Redux.getInitialProps = async (ctx: AppContext): Promise<Props> => {
+  const { store } = ctx
+
   const pagePayload: IPagePayload = {
     selectedPage: Page.REDUX,
   }
-  ctx.store.dispatch({
+  store.dispatch({
     type: PageActions.changePage.toString(),
     payload: pagePayload,
   })
+  return {}
 }
 
 export default Redux
