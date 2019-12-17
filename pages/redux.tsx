@@ -30,13 +30,17 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 
-type Props = {}
+type Props = {
+  // passed from getInitialProps
+  defaultInputNumber: number
+}
 
 function Redux(props: Props) {
+  const { defaultInputNumber: defaultCount } = props
   const classes = useStyles(props)
   const dispatch = useDispatch()
   const count = useSelector(countSelector)
-  const [inputNumber, setInputNumber] = useState<number>(10)
+  const [inputNumber, setInputNumber] = useState<number>(defaultCount)
 
   /**
    * Increment
@@ -134,7 +138,9 @@ Redux.getInitialProps = async (ctx: AppContext): Promise<Props> => {
     type: PageActions.changePage.toString(),
     payload: pagePayload,
   })
-  return {}
+  return {
+    defaultInputNumber: 2,
+  }
 }
 
 export default Redux
