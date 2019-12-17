@@ -8,7 +8,9 @@
   },
   "files.insertFinalNewline": true,
   "javascript.format.enable": false,
-  "prettier.tslintIntegration": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.tslint": true
+  },
   "[javascript]": {
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true,

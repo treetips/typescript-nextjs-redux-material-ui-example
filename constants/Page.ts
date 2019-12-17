@@ -1,9 +1,7 @@
 import { Color } from "@material-ui/core"
-import { blue, orange, pink, red } from "@material-ui/core/colors"
+import { blue, orange, pink, red, teal } from "@material-ui/core/colors"
 import { SvgIconProps } from "@material-ui/core/SvgIcon"
-import HomeIcon from "@material-ui/icons/Home"
-import InfoIcon from "@material-ui/icons/Info"
-import SaveIcon from "@material-ui/icons/Save"
+import { Home, Info, Save, Whatshot } from "@material-ui/icons"
 import { IEnum } from "."
 
 /**
@@ -23,7 +21,7 @@ export class Page implements IEnum<Page> {
     "Top page | sample",
     "Feat typescript and next.js and redux and material-ui !!",
     "/",
-    HomeIcon,
+    Home,
     pink
   )
   public static readonly REDUX = new Page(
@@ -33,17 +31,27 @@ export class Page implements IEnum<Page> {
     "Redux sample | sample",
     "Basic redux examples with typescript-fsa and immer.",
     "/redux",
-    SaveIcon,
+    Save,
     blue
   )
-  public static readonly ABOUT = new Page(
+  public static readonly REDUX_SAGAA = new Page(
     3,
+    "Redux Saga",
+    "Redux Saga sample",
+    "Redux Saga sample | sample",
+    "Basic redux-saga examples with typescript-fsa and immer.",
+    "/redux-saga",
+    Whatshot,
+    teal
+  )
+  public static readonly ABOUT = new Page(
+    10,
     "About",
     "About this site",
     "About | sample",
     "Site about page.",
     "/about",
-    InfoIcon,
+    Info,
     orange
   )
   public static readonly ERROR = new Page(
@@ -53,7 +61,7 @@ export class Page implements IEnum<Page> {
     "Error | sample",
     "Error.",
     "/error",
-    InfoIcon,
+    Info,
     red
   )
 
