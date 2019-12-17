@@ -12,7 +12,8 @@ VSCode と prettier と TSLint によって、リアルタイムに整形と構�
 
 ### For desktop
 
-![For desktop](https://user-images.githubusercontent.com/12574048/46964420-f9fb9180-d0e2-11e8-9c05-e1594c533947.png)
+![For desktop 1](https://user-images.githubusercontent.com/12574048/46964420-f9fb9180-d0e2-11e8-9c05-e1594c533947.png)
+![For desktop 2](https://user-images.githubusercontent.com/12574048/71005010-3337f300-2126-11ea-844c-d113f5d87255.png)
 
 ### For mobile
 
@@ -26,6 +27,7 @@ VSCode と prettier と TSLint によって、リアルタイムに整形と構�
 - [Next.js v9](https://nextjs.org/)
 - [MATERIAL-UI v4](https://material-ui.com/)
 - [Redux](https://redux.js.org/)
+- [redux-saga](https://redux-saga.js.org/)
 - [TSLint](https://palantir.github.io/tslint/)
 
 ## Requirement
