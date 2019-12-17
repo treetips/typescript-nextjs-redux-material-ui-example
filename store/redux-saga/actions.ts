@@ -54,5 +54,6 @@ export type ReduxSagaActionTypes =
   | ReturnType<typeof ReduxSagaActions.fetchDebounce>
   | ReturnType<typeof ReduxSagaActions.debounceSuccess>
   | ReturnType<typeof ReduxSagaActions.debounceFailure>
+  | ReturnType<typeof ReduxSagaActions.fetchThrottle>
   | ReturnType<typeof ReduxSagaActions.throttleSuccess>
   | ReturnType<typeof ReduxSagaActions.throttleFailure>
