@@ -2,7 +2,7 @@ import produce from "immer"
 import { reducerWithInitialState } from "typescript-fsa-reducers"
 import { IPagePayload, IPageState, PageActions, PageInitialState } from "."
 
-export default reducerWithInitialState(PageInitialState).case(
+export const pageReducer = reducerWithInitialState(PageInitialState).case(
   PageActions.changePage,
   (
     state: Readonly<IPageState>,
