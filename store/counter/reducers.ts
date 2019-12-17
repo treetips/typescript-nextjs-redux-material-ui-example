@@ -7,7 +7,7 @@ import {
   ICounterState,
 } from "."
 
-export default reducerWithInitialState(CounterInitialState)
+export const countReducer = reducerWithInitialState(CounterInitialState)
   .case(
     CounterActions.increment,
     (state: Readonly<ICounterState>): ICounterState => {
