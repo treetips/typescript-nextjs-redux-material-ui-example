@@ -7,13 +7,12 @@ import {
 } from "@material-ui/core"
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles"
 import React, { useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
 import { AppContext } from "../components/AppContext"
 import { SpacingPaper } from "../components/atoms"
 import { HeaderArticleContainer } from "../components/organisms"
 import { Layout } from "../components/templates"
 import { Page } from "../constants"
-import { CounterActions, countSelector } from "../store/counter"
+import { useCounter } from "../hooks"
 import { IPagePayload, PageActions } from "../store/page"
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -38,19 +37,8 @@ type Props = {
 function Redux(props: Props) {
   const { defaultInputNumber: defaultCount } = props
   const classes = useStyles(props)
-  const dispatch = useDispatch()
-  const count = useSelector(countSelector)
   const [inputNumber, setInputNumber] = useState<number>(defaultCount)
-
-  /**
-   * Increment
-   */
-  const handleIncrement = () => dispatch(CounterActions.increment())
-
-  /**
-   * Decrement
-   */
-  const handleDecrement = () => dispatch(CounterActions.decrement())
+  const { count, increment, decrement, calculate } = useCounter()
 
   /**
    * Change inputNumber value
@@ -61,17 +49,6 @@ function Redux(props: Props) {
     if (val.match(/^([1-9]|0)+[0-9]*$/i)) {
       setInputNumber(Number(val))
     }
-  }
-
-  /**
-   * Calculate input number
-   */
-  const handleCalculate = () => {
-    dispatch(
-      CounterActions.calculate({
-        inputNumber: Number(inputNumber),
-      })
-    )
   }
 
   const CurrentNumber = () => (
@@ -86,11 +63,11 @@ function Redux(props: Props) {
             Increment / Decrement
           </Typography>
           <CurrentNumber />
-          <Button variant="contained" color="primary" onClick={handleIncrement}>
+          <Button variant="contained" color="primary" onClick={increment}>
             + 1
           </Button>
           &nbsp;
-          <Button variant="contained" color="primary" onClick={handleDecrement}>
+          <Button variant="contained" color="primary" onClick={decrement}>
             - 1
           </Button>
         </SpacingPaper>
@@ -114,7 +91,7 @@ function Redux(props: Props) {
             <Button
               variant="contained"
               color="primary"
-              onClick={handleCalculate}
+              onClick={() => calculate(inputNumber)}
             >
               calculate
             </Button>
