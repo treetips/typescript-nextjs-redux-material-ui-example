@@ -1,7 +1,6 @@
 import { Typography } from "@material-ui/core"
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles"
 import React from "react"
-import { useDispatch, useSelector } from "react-redux"
 import { AppContext } from "../components/AppContext"
 import { SpacingPaper } from "../components/atoms"
 import {
@@ -10,12 +9,8 @@ import {
 } from "../components/organisms"
 import { Layout } from "../components/templates"
 import { Page, SagaSetting } from "../constants"
+import { useThinOut } from "../hooks"
 import { IPagePayload, PageActions } from "../store/page"
-import {
-  ReduxSagaActions,
-  reduxSagaDebounceSelector,
-  reduxSagaThrottleSelector,
-} from "../store/redux-saga"
 
 const useStyles = makeStyles((_: Theme) =>
   createStyles({
@@ -28,25 +23,7 @@ type Props = {}
 function ReduxSaga(props: Props) {
   const {} = props
   const classes = useStyles(props)
-  const dispatch = useDispatch()
-  const reduxSagaDebounceState = useSelector(reduxSagaDebounceSelector)
-  const reduxSagaThrottleState = useSelector(reduxSagaThrottleSelector)
-
-  const onDebounce = (inputValue: string) => {
-    dispatch(
-      ReduxSagaActions.fetchDebounce({
-        input: inputValue,
-      })
-    )
-  }
-
-  const onThrottle = (inputValue: string) => {
-    dispatch(
-      ReduxSagaActions.fetchThrottle({
-        input: inputValue,
-      })
-    )
-  }
+  const { debounce, debounceState, throttle, throttleState } = useThinOut()
 
   return (
     <Layout className={classes.root}>
@@ -62,20 +39,20 @@ function ReduxSaga(props: Props) {
                 </Typography>
               </>
             }
-            storeState={reduxSagaDebounceState}
+            storeState={debounceState}
             responseResultMax={10}
             interval={SagaSetting.DEBOUNCE_INTERVAL}
-            onChange={onDebounce}
+            onChange={(inputValue: string) => debounce(inputValue)}
           />
         </SpacingPaper>
 
         <SpacingPaper>
           <ReduxSagaSample
             title="throttle"
-            storeState={reduxSagaThrottleState}
+            storeState={throttleState}
             responseResultMax={10}
             interval={SagaSetting.THROTTLE_INTERVAL}
-            onChange={onThrottle}
+            onChange={(inputValue: string) => throttle(inputValue)}
           />
         </SpacingPaper>
       </HeaderArticleContainer>
