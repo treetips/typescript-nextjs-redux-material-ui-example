@@ -1,7 +1,8 @@
+import { Env } from "../constants"
 import { InitialState } from "../store/states"
 
 const configureStoreComponent = (() => {
-  if (process.env.NODE_ENV === "production") {
+  if (Env.NODE_ENV === "production") {
     return require("./configureStore.production")
   }
   return require("./configureStore.development")
