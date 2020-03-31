@@ -21,7 +21,7 @@
     "compression": "^1.7.4",
     "express": "^4.17.1",
     "immer": "^4.0.2",
-    "next": "^9.1.5",
+    "next": "^9.3.2",
     "next-redux-wrapper": "^4.0.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
