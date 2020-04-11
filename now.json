@@ -1,0 +1,7 @@
+{
+  "build": {
+    "env": {
+      "API_SERVER_URL": "@api_server_url"
+    }
+  }
+}
