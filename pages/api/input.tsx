@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next"
 import { InputResponseModel } from "../../model"
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
-  const inputValue = req.query["value"][0]
+  const inputValue = String(req.query["value"])
   const responseBody: InputResponseModel = {
     input: inputValue,
     timestamp: getCurrentTimestamp(),
