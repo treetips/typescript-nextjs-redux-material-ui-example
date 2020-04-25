@@ -36,6 +36,7 @@ VSCode と prettier と TSLint によって、リアルタイムに整形と構�
 
 - [Google Chrome](https://www.google.com/intl/ja_ALL/chrome/)
 - [Visual Studio Code](https://code.visualstudio.com/)
+- TypeScript v3.7 or higher( [require Optional Chaining](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html#optional-chaining) )
 
 ## Install Google Chrome addon
 
