@@ -1,9 +1,8 @@
 import { List } from "@material-ui/core"
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles"
 import SvgIcon from "@material-ui/core/SvgIcon"
-import { useDispatch, useSelector } from "react-redux"
 import { Page, SiteInfo } from "../../constants"
-import { PageActions, selectedPageSelector } from "../../store/page"
+import { usePage } from "../../hooks"
 import { NextListItem } from "../molecules"
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -50,13 +49,10 @@ type Props = {}
  * Side navigation component
  * @param props Props
  */
-export const Sidenavi = function(props: Props) {
+export const Sidenavi = function (props: Props) {
   const classes = useStyles(props)
-  const selectedPage = useSelector(selectedPageSelector)
-  const dispatch = useDispatch()
-
-  const handleChangePage = (page: Page) => () =>
-    dispatch(PageActions.changePage({ selectedPage: page }))
+  const { selectedPage, changePage } = usePage()
+  const handleChangePage = (page: Page) => () => changePage(page)
 
   return (
     <div className={classes.root}>
@@ -65,7 +61,7 @@ export const Sidenavi = function(props: Props) {
       </div>
 
       <List className={classes.list}>
-        {Page.values.map(page => {
+        {Page.values.map((page) => {
           const Icon = page.icon
           return (
             <NextListItem

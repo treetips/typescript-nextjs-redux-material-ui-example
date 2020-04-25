@@ -3,8 +3,7 @@ import IconButton from "@material-ui/core/IconButton"
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles"
 import MenuIcon from "@material-ui/icons/Menu"
 import React, { useState } from "react"
-import { useSelector } from "react-redux"
-import { selectedPageSelector } from "../../store/page"
+import { usePage } from "../../hooks"
 import { Sidenavi } from "../organisms"
 
 const drawerWidth = 290
@@ -55,10 +54,10 @@ type Props = {
  * Responsive drawer
  * @see https://material-ui.com/demos/drawers/#responsive-drawer
  */
-export const ResponsiveDrawer = function(props: Props) {
+export const ResponsiveDrawer = function (props: Props) {
   const { children } = props
   const classes = useStyles(props)
-  const selectedPage = useSelector(selectedPageSelector)
+  const { selectedPage } = usePage()
   const [mobileOpen, setMobileOpen] = useState<boolean>(false)
   /**
    * Toggle drawer
