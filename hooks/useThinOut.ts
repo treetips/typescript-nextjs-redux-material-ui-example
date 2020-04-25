@@ -1,3 +1,4 @@
+import { useCallback } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import {
   IReduxSagaState,
@@ -22,21 +23,27 @@ export const useThinOut = (): Readonly<ThinOutOperators> => {
   const reduxSagaDebounceState = useSelector(reduxSagaDebounceSelector)
   const reduxSagaThrottleState = useSelector(reduxSagaThrottleSelector)
 
-  const handleDebounce = (inputValue: string) => {
-    dispatch(
-      ReduxSagaActions.fetchDebounce({
-        input: inputValue,
-      })
-    )
-  }
+  const handleDebounce = useCallback(
+    (inputValue: string) => {
+      dispatch(
+        ReduxSagaActions.fetchDebounce({
+          input: inputValue,
+        })
+      )
+    },
+    [dispatch]
+  )
 
-  const handleThrottle = (inputValue: string) => {
-    dispatch(
-      ReduxSagaActions.fetchThrottle({
-        input: inputValue,
-      })
-    )
-  }
+  const handleThrottle = useCallback(
+    (inputValue: string) => {
+      dispatch(
+        ReduxSagaActions.fetchThrottle({
+          input: inputValue,
+        })
+      )
+    },
+    [dispatch]
+  )
 
   return {
     debounce: handleDebounce,
