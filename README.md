@@ -28,6 +28,8 @@ VSCode と prettier と TSLint によって、リアルタイムに整形と構�
 - [MATERIAL-UI v4](https://material-ui.com/)
 - [Redux](https://redux.js.org/)
 - [redux-saga](https://redux-saga.js.org/)
+- [typescript-fsa](https://github.com/aikoven/typescript-fsa)
+- [typescript-fsa-reducer](https://github.com/dphilipson/typescript-fsa-reducers)
 - [TSLint](https://palantir.github.io/tslint/)
 
 ## Requirement
