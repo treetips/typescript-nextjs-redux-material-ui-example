@@ -8,6 +8,10 @@ By VSCode and prettier and TSLint, realtime code format and realtime sentence st
 
 VSCode と prettier と TSLint によって、リアルタイムに整形と構文チェックと未使用 import の整理が行われます。
 
+## Live demo
+
+[Live demo](https://typescript-nextjs-redux-material-ui-example.now.sh/)
+
 ## Screenshot
 
 ### For desktop
@@ -85,3 +89,7 @@ vi ./deploy-appengine.sh
 ```bash
 ./deploy-appengine.sh
 ```
+
+## Related repository
+
+* [typescript-nextjs-redux-toolkit-material-ui-example](https://github.com/treetips/typescript-nextjs-redux-toolkit-material-ui-example)
