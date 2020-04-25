@@ -34,7 +34,7 @@ type Props = {
  * redux-saga sample component
  * @param props {Props} props
  */
-export const ReduxSagaSample = function(props: Props) {
+export const ReduxSagaSample = function (props: Props) {
   const {
     title,
     description,
@@ -49,7 +49,7 @@ export const ReduxSagaSample = function(props: Props) {
   const [previousResponseValue, setPreviousResponseValue] = useState<string>("")
 
   useEffect(() => {
-    if (!storeState.timestamp) {
+    if (!storeState?.timestamp) {
       return
     }
     const fetchResult = `${storeState.timestamp} - ${storeState.input}`
@@ -62,7 +62,7 @@ export const ReduxSagaSample = function(props: Props) {
     }
     setResponseValues(responseValues)
     setPreviousResponseValue(fetchResult)
-  }, [storeState.timestamp])
+  }, [storeState?.timestamp])
 
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value || ""

@@ -16,7 +16,7 @@
     "sourceMap": true,
     "experimentalDecorators": true,
     "typeRoots": ["./node_modules/@types"],
-    "strict": false,
+    "strict": true,
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,

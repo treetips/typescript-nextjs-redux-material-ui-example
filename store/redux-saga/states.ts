@@ -2,8 +2,8 @@
  * redux-saga
  */
 export interface IReduxSagaState {
-  input: string
-  timestamp: string
+  input?: string
+  timestamp?: string
   error?: Error
 }
 export const ReduxSagaInitialState: IReduxSagaState = {

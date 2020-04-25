@@ -15,7 +15,7 @@ const useStyles = makeStyles((_: Theme) =>
 )
 
 type Props = {
-  httpStatusCode: number
+  httpStatusCode?: number
 }
 
 function Error(props: Props) {
@@ -48,7 +48,7 @@ Error.getInitialProps = async (ctx: AppContext): Promise<Props> => {
     payload: pagePayload,
   })
   return {
-    httpStatusCode: res.statusCode,
+    httpStatusCode: res?.statusCode,
   }
 }
 
