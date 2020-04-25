@@ -40,4 +40,4 @@ class MyApp extends App<Props> {
   }
 }
 
-export default withRedux(configureStore())(MyApp)
+export default withRedux(configureStore, { debug: false })(MyApp)
