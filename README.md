@@ -36,7 +36,6 @@ VSCode と prettier と TSLint によって、リアルタイムに整形と構�
 
 - [Google Chrome](https://www.google.com/intl/ja_ALL/chrome/)
 - [Visual Studio Code](https://code.visualstudio.com/)
-- [yarn](https://yarnpkg.com/lang/ja/)
 
 ## Install Google Chrome addon
 
