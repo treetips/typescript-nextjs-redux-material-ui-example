@@ -28,13 +28,15 @@ VSCode と prettier と TSLint によって、リアルタイムに整形と構�
 - [MATERIAL-UI v4](https://material-ui.com/)
 - [Redux](https://redux.js.org/)
 - [redux-saga](https://redux-saga.js.org/)
+- [typescript-fsa](https://github.com/aikoven/typescript-fsa)
+- [typescript-fsa-reducer](https://github.com/dphilipson/typescript-fsa-reducers)
 - [TSLint](https://palantir.github.io/tslint/)
 
 ## Requirement
 
 - [Google Chrome](https://www.google.com/intl/ja_ALL/chrome/)
 - [Visual Studio Code](https://code.visualstudio.com/)
-- [yarn](https://yarnpkg.com/lang/ja/)
+- TypeScript v3.7 or higher( [require Optional Chaining](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html#optional-chaining) )
 
 ## Install Google Chrome addon
 

@@ -1,8 +1,7 @@
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles"
 import Head from "next/head"
 import * as React from "react"
-import { useSelector } from "react-redux"
-import { selectedPageSelector } from "../../store/page"
+import { usePage } from "../../hooks"
 import { ResponsiveDrawer } from "../organisms"
 
 const useStyles = makeStyles((_: Theme) =>
@@ -18,10 +17,11 @@ type Props = {
   className?: string
 }
 
-export const Layout = function(props: Props) {
+export const Layout = function (props: Props) {
   const { children, className } = props
   const classes = useStyles(props)
-  const selectedPage = useSelector(selectedPageSelector)
+  const { selectedPage } = usePage()
+
   return (
     <section className={`${classes.root} ${className}`}>
       <Head>

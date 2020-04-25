@@ -1,3 +1,4 @@
+import { useCallback } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { CounterActions, countSelector } from "../store/counter"
 
@@ -17,14 +18,21 @@ export const useCounter = (): Readonly<CounterOperators> => {
 
   return {
     count: useSelector(countSelector),
-    increment: () => dispatch(CounterActions.increment()),
-    decrement: () => dispatch(CounterActions.decrement()),
-    calculate: (inputNumber: number) => {
-      dispatch(
-        CounterActions.calculate({
-          inputNumber: inputNumber,
-        })
-      )
-    },
+    increment: useCallback(() => dispatch(CounterActions.increment()), [
+      dispatch,
+    ]),
+    decrement: useCallback(() => dispatch(CounterActions.decrement()), [
+      dispatch,
+    ]),
+    calculate: useCallback(
+      (inputNumber: number) => {
+        dispatch(
+          CounterActions.calculate({
+            inputNumber: inputNumber,
+          })
+        )
+      },
+      [dispatch]
+    ),
   }
 }

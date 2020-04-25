@@ -1,8 +1,7 @@
 import { Paper, Typography } from "@material-ui/core"
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles"
 import React from "react"
-import { useSelector } from "react-redux"
-import { selectedPageSelector } from "../../store/page"
+import { usePage } from "../../hooks"
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -30,9 +29,10 @@ type Props = {}
  * Page header component
  * @param props Props
  */
-export const PageHeader = function(props: Props) {
+export const PageHeader = function (props: Props) {
   const classes = useStyles(props)
-  const selectedPage = useSelector(selectedPageSelector)
+  const { selectedPage } = usePage()
+
   return (
     <Paper square={true} className={classes.root}>
       <Typography variant="h1" color="inherit" className={classes.title}>
