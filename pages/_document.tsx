@@ -4,7 +4,6 @@ import React from "react"
 import flush from "styled-jsx/server"
 import { AppContext } from "../components/AppContext"
 import { MuiTheme } from "../components/MuiTheme"
-import "../styles/main.css"
 
 type Props = {
   pageProps: any
@@ -22,7 +21,7 @@ class MyDocument extends Document<Props> {
 
     ctx.renderPage = () =>
       originalRenderPage({
-        enhanceApp: App => props => sheets.collect(<App {...props} />),
+        enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
       })
 
     const initialProps = await Document.getInitialProps(ctx)

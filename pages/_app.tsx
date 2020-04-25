@@ -6,6 +6,7 @@ import React from "react"
 import { Provider } from "react-redux"
 import { MuiTheme } from "../components/MuiTheme"
 import { configureStore } from "../store/configureStore"
+import "../styles/main.css"
 
 type Props = {
   Component: React.Component
