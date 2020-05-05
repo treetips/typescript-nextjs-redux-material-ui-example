@@ -1,10 +1,8 @@
-import { IInitialState } from "../states"
+import { RootState } from "../reducers"
 import { IReduxSagaState } from "./states"
 
-export const reduxSagaDebounceSelector = (
-  state: IInitialState
-): IReduxSagaState => state.reduxSagaDebounce
+export const reduxSagaDebounceSelector = (state: RootState): IReduxSagaState =>
+  state.reduxSagaDebounce
 
-export const reduxSagaThrottleSelector = (
-  state: IInitialState
-): IReduxSagaState => state.reduxSagaThrottle
+export const reduxSagaThrottleSelector = (state: RootState): IReduxSagaState =>
+  state.reduxSagaThrottle

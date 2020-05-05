@@ -1,4 +1,4 @@
-import { IInitialState } from "../states"
+import { RootState } from "../reducers"
 
-export const selectedPageSelector = (state: IInitialState) =>
+export const selectedPageSelector = (state: RootState) =>
   state.page.selectedPage
