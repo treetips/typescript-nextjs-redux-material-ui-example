@@ -1,3 +1,3 @@
-import { IInitialState } from "../states"
+import { RootState } from "../reducers"
 
-export const countSelector = (state: IInitialState) => state.counter.count
+export const countSelector = (state: RootState) => state.counter.count

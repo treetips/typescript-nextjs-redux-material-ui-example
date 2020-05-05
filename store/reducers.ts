@@ -5,11 +5,12 @@ import {
   reduxSagaDebounceReducer,
   reduxSagaThrottleReducer,
 } from "./redux-saga/reducers"
-import { IInitialState } from "./states"
 
-export const combinedReducers = combineReducers<IInitialState>({
+export const combinedReducers = combineReducers({
   counter: countReducer,
   page: pageReducer,
   reduxSagaDebounce: reduxSagaDebounceReducer,
   reduxSagaThrottle: reduxSagaThrottleReducer,
 })
+
+export type RootState = ReturnType<typeof combinedReducers>

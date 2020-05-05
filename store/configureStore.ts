@@ -1,5 +1,5 @@
 import { Env } from "../constants"
-import { IInitialState } from "../store/states"
+import { RootState } from "./reducers"
 
 const configureStoreComponent = (() => {
   if (Env.NODE_ENV === "production") {
@@ -8,5 +8,5 @@ const configureStoreComponent = (() => {
   return require("./configureStore.development")
 })()
 
-export const configureStore = (initialState?: IInitialState) =>
+export const configureStore = (initialState?: RootState) =>
   configureStoreComponent.configureStore(initialState)
