@@ -9,8 +9,10 @@
   },
   "files.insertFinalNewline": true,
   "javascript.format.enable": false,
+  "eslint.enable": true,
+  "eslint.format.enable": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.tslint": true
+    "source.fixAll.eslint": true
   },
   "[javascript]": {
     "editor.formatOnSave": true,
