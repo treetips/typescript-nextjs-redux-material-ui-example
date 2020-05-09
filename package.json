@@ -7,6 +7,7 @@
     "dev": "next",
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
+    "format": "prettier --write \"{components,constants,hooks,model,pages,store,types}/**/*.{ts,tsx}\"",
     "lint": "eslint \"{components,constants,hooks,model,pages,store,types}/**/*.ts\" --fix"
   },
   "keywords": [],

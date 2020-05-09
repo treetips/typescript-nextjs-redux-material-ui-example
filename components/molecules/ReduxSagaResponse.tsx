@@ -15,7 +15,7 @@ type Props = {
  * redux-saga response component
  * @param props Props
  */
-export const ReduxSagaResponse = function(props: Props) {
+export const ReduxSagaResponse = function (props: Props) {
   const classes = useStyles(props)
   const { responses } = props
   return (
