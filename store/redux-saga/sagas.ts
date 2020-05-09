@@ -12,17 +12,6 @@ import {
   ReduxSagaActionTypes,
 } from "./actions"
 
-/**
- * Monitor specific redux-debounce-action fire when detected
- */
-export const watchFetchDebounce = function*() {
-  yield debounce(
-    SagaSetting.DEBOUNCE_INTERVAL,
-    ReduxSagaActions.fetchDebounce,
-    executeFetchDebounce
-  )
-}
-
 function* executeFetchDebounce(action: ReduxSagaActionTypes) {
   const fetchPayload = action.payload as IReduxSagaFetchPayload
 
@@ -58,13 +47,13 @@ function* executeFetchDebounce(action: ReduxSagaActionTypes) {
 }
 
 /**
- * Monitor specific redux-throttle-action fire when detected
+ * Monitor specific redux-debounce-action fire when detected
  */
-export const watchFetchThrottle = function*() {
-  yield throttle(
-    SagaSetting.THROTTLE_INTERVAL,
-    ReduxSagaActions.fetchThrottle,
-    executeFetchThrottle
+export const watchFetchDebounce = function* () {
+  yield debounce(
+    SagaSetting.DEBOUNCE_INTERVAL,
+    ReduxSagaActions.fetchDebounce,
+    executeFetchDebounce
   )
 }
 
@@ -96,4 +85,15 @@ function* executeFetchThrottle(action: ReduxSagaActionTypes) {
       payload: failurePayload,
     })
   }
+}
+
+/**
+ * Monitor specific redux-throttle-action fire when detected
+ */
+export const watchFetchThrottle = function* () {
+  yield throttle(
+    SagaSetting.THROTTLE_INTERVAL,
+    ReduxSagaActions.fetchThrottle,
+    executeFetchThrottle
+  )
 }
