@@ -1,15 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next"
 import { InputResponseModel } from "../../model"
 
-export default (req: NextApiRequest, res: NextApiResponse) => {
-  const inputValue = String(req.query["value"])
-  const responseBody: InputResponseModel = {
-    input: inputValue,
-    timestamp: getCurrentTimestamp(),
-  }
-  res.status(200).json(responseBody)
-}
-
 const getCurrentTimestamp = () => {
   const padding = (value: number, num: number): string =>
     String(value).padStart(num, "0")
@@ -23,4 +14,13 @@ const getCurrentTimestamp = () => {
   const microSecond = padding(d.getMilliseconds(), 3)
 
   return `${year}/${month}/${date} ${hour}:${minute}:${second}.${microSecond}`
+}
+
+export default (req: NextApiRequest, res: NextApiResponse) => {
+  const inputValue = String(req.query["value"])
+  const responseBody: InputResponseModel = {
+    input: inputValue,
+    timestamp: getCurrentTimestamp(),
+  }
+  res.status(200).json(responseBody)
 }
