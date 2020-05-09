@@ -6,9 +6,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js",
-    "lint": "tslint -c ./tslint.json --exclude **/*.d.ts --exclude ./node_modules --project . --fix **/*.tsx --fix **/*.ts",
-    "tslint-check": "tslint-config-prettier-check ./tslint.json"
+    "start": "NODE_ENV=production node server.js"
   },
   "keywords": [],
   "author": "",
@@ -43,10 +41,6 @@
     "dotenv-webpack": "^1.7.0",
     "prettier": "^2.0.5",
     "redux-devtools-extension": "^2.13.8",
-    "tslint": "^6.1.1",
-    "tslint-config-prettier": "^1.18.0",
-    "tslint-config-standard": "^9.0.0",
-    "tslint-plugin-prettier": "^2.3.0",
     "typescript": "^3.8.3"
   }
 }
