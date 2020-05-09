@@ -7,8 +7,8 @@
     "dev": "next",
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
-    "lint": "tslint -c ./tslint.json --exclude **/*.d.ts --exclude ./node_modules --project . --fix **/*.tsx --fix **/*.ts",
-    "tslint-check": "tslint-config-prettier-check ./tslint.json"
+    "format": "prettier --write \"{components,constants,hooks,model,pages,store,types}/**/*.{ts,tsx}\"",
+    "lint": "eslint \"{components,constants,hooks,model,pages,store,types}/**/*.ts\" --fix"
   },
   "keywords": [],
   "author": "",
@@ -40,13 +40,14 @@
     "@types/react-redux": "^7.1.7",
     "@types/redux": "^3.6.0",
     "@types/styled-jsx": "^2.2.8",
+    "@typescript-eslint/eslint-plugin": "^2.31.0",
+    "@typescript-eslint/parser": "^2.31.0",
     "dotenv-webpack": "^1.7.0",
+    "eslint": "^7.0.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.20.2",
     "prettier": "^2.0.5",
     "redux-devtools-extension": "^2.13.8",
-    "tslint": "^6.1.1",
-    "tslint-config-prettier": "^1.18.0",
-    "tslint-config-standard": "^9.0.0",
-    "tslint-plugin-prettier": "^2.3.0",
     "typescript": "^3.8.3"
   }
 }

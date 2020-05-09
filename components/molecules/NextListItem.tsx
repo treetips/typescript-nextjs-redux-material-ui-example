@@ -57,7 +57,7 @@ type Props = {
  * Next.js optimized <ListItem>
  * @param props Props
  */
-export const NextListItem = function(props: Props) {
+export const NextListItem = function (props: Props) {
   const { className, href, icon, primary, secondary, onClick } = props
   const classes = useStyles(props)
   const AvatorIcon = () => icon

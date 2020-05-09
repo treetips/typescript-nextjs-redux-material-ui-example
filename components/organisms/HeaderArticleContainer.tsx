@@ -21,7 +21,7 @@ type Props = {
  * Header and article container component
  * @param props Props
  */
-export const HeaderArticleContainer = function(props: Props) {
+export const HeaderArticleContainer = function (props: Props) {
   const { children } = props
   const classes = useStyles(props)
   return (
