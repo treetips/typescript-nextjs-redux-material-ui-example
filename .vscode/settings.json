@@ -8,6 +8,7 @@
     ".next": true
   },
   "files.insertFinalNewline": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "javascript.format.enable": false,
   "eslint.enable": true,
   "eslint.format.enable": true,
