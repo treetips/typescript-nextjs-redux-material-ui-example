@@ -5,9 +5,11 @@
   },
   "search.exclude": {
     "**/node_modules": true,
-    ".next": true
+    ".next": true,
+    ".now": true
   },
   "files.insertFinalNewline": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "javascript.format.enable": false,
   "eslint.enable": true,
   "eslint.format.enable": true,
@@ -16,27 +18,23 @@
   },
   "[javascript]": {
     "editor.formatOnSave": true,
-    "editor.formatOnPaste": true,
     "editor.codeActionsOnSave": {
       "source.organizeImports": true
     }
   },
   "[typescript]": {
     "editor.formatOnSave": true,
-    "editor.formatOnPaste": true,
     "editor.codeActionsOnSave": {
       "source.organizeImports": true
     }
   },
   "[typescriptreact]": {
     "editor.formatOnSave": true,
-    "editor.formatOnPaste": true,
     "editor.codeActionsOnSave": {
       "source.organizeImports": true
     }
   },
   "[jsonc]": {
-    "editor.formatOnSave": true,
-    "editor.formatOnPaste": true
+    "editor.formatOnSave": true
   }
 }
