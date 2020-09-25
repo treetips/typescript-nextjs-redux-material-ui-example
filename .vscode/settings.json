@@ -5,7 +5,8 @@
   },
   "search.exclude": {
     "**/node_modules": true,
-    ".next": true
+    ".next": true,
+    ".now": true
   },
   "files.insertFinalNewline": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
