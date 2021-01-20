@@ -19,7 +19,7 @@
     "@material-ui/styles": "^4.9.10",
     "compression": "^1.7.4",
     "express": "^4.17.1",
-    "immer": "^6.0.3",
+    "immer": "^8.0.1",
     "next": "^9.3.5",
     "next-redux-wrapper": "^6.0.0-rc.7",
     "react": "^16.13.1",
